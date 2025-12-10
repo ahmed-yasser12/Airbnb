@@ -4,6 +4,7 @@ import { format } from "date-fns";
 import { getSearchResult } from "../utils/api";
 import { SearchData } from "../types/app";
 import ListingCard from "../components/ListingCard";
+// import MapView from "../components/MapView";
 
 type SearchParams = {
   location?: string;
@@ -20,7 +21,7 @@ export default async function SearchResult({
   const params = await searchParams; // ⭐ Important fix!
 
   const { location, StartDate, EndDate, guests } = params;
-  console.log(location);
+
   let formattedStartDate = "";
   let formattedEndDate = "";
 
@@ -67,6 +68,9 @@ export default async function SearchResult({
               <ListingCard key={index} img={item.img} description={item.description} total={item.total} star={item.star} location={item.location} title={item.title} price={item.price}/>
             ))}
           </div>
+          {/* <div className='hidden xl:inline-flex xl:min-w-[600px]'>
+              <MapView SearchData={searchData}/>
+            </div> */}
         </section>
       </main>
 

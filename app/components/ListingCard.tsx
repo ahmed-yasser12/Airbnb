@@ -1,8 +1,8 @@
 import Image from "next/image"
 import {SearchItem } from "../types/app"
 import { HeartIcon } from "@heroicons/react/solid"
-// Omit<SearchData, "long","lat">
-const ListingCard = ({img,location,title,description,star,price,total}:SearchItem) => {
+// Omit<SearchItem, "long"|"lat">
+const ListingCard = ({img,location,title,description,star,price,total}:Omit<SearchItem, "long"|"lat">) => {
   return (
     <div className="flex py-7 px-2 border-b cursor-pointer hover:opacity-80 hover:shadow-lg transition duration-200 ease-out first:border-t">
       <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0">
