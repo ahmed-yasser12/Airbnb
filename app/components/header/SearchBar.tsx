@@ -5,19 +5,19 @@ import { DateRangePicker, RangeKeyDict } from 'react-date-range';
 import { SearchIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import Link from 'next/link';
-function SearchBar() {
+function SearchBar({placeholder}:{placeholder?:string}) {
+
   const [input, setInput] = useState('')
   const [numberOfGuest, setnumberOfGuest] = useState(1)
-  const [startData, setstartData] = useState(new Date())
-  const [endData, setendData] = useState(new Date())
+  const [startDate, setstartDate] = useState(new Date())
+  const [endDate, setendDate] = useState(new Date())
  const handleSelect=(ranges:RangeKeyDict)=>{
-   setstartData(ranges.selection.startDate  as Date)
-   setendData(ranges.selection.endDate as Date)
-   console.log(startData)
+   setstartDate(ranges.selection.startDate  as Date)
+   setendDate(ranges.selection.endDate as Date)
   }
   const selectionRange = {
-      startData,
-      endData ,
+      startDate , 
+      endDate ,
       key: 'selection',
     }
   return (
@@ -27,7 +27,7 @@ function SearchBar() {
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Start your Search"
+        placeholder={placeholder || "Start your search"}
         className="text-sm text-gray-600 placeholder-gray-400 flex-grow pl-5 bg-transparent outline-none"
       />
 
@@ -46,7 +46,7 @@ function SearchBar() {
       </div>
       <div className="flex justify-evenly bg-white p-2">
         <button className=" text-gray-500" onClick={()=>setInput('')}>Cancel</button>
-        <Link href={"/"} className=" text-red-400">Search</Link>
+        <Link href={{pathname:"/search",search:`?location=${input}&StartDate=${startDate.toString()}&EndDate=${endDate.toString()}&guests=${numberOfGuest}`}} onClick={()=> setInput("")} className=" text-red-400">Search</Link>
       </div> </div> }
 
    </>

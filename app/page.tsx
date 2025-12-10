@@ -4,15 +4,19 @@ import Expoler from "./components/Expoler";
 import { Live } from "./components/Live";
 import GreatestOutdoors from "./components/GreatestOutdoors";
 import Footer from "./components/Footer";
+import Header from "./components/header/Header";
 
 export default function Home() {
   return (
-   <div>
-    <Banner/>
-    <Expoler/>
-    <Live/>
-    <GreatestOutdoors/>
-    <Footer/>
-   </div>
+    <>
+      <Header />
+      <div>
+        <Banner />
+        <Expoler />
+        <Live />
+        <GreatestOutdoors />
+      </div>
+      <Footer />
+    </>
   );
 }
